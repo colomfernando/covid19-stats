@@ -1,13 +1,15 @@
 import React from 'react';
 import GlobalStyles from 'theme/GlobalStyles';
+import Header from 'components/Header';
+import Search from 'components/Search';
 
-const App: React.FC = (): JSX.Element => (
+const App: React.FC = () => (
   <>
     <GlobalStyles />
-    <div className="App">
-      <header className="App-header">
-        <p>covid</p>
-      </header>
+    <div>
+      <Header>
+        <Search />
+      </Header>
     </div>
   </>
 );
