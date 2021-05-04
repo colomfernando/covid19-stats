@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import GlobalStyles from './GlobalStyles';
 
-const App: React.FC = (): ReactElement => (
+const App: React.FC = (): JSX.Element => (
   <>
     <GlobalStyles />
     <div className="App">

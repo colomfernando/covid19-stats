@@ -41,6 +41,10 @@ main {
   display: block;
 }
 
+p {
+	margin: 0;
+}
+
 /**
  * Correct the font size and margin on h1 elements within section and
  * article contexts in Chrome, Firefox, and Safari.
