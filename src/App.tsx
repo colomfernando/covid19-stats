@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStyles from './GlobalStyles';
+import GlobalStyles from 'theme/GlobalStyles';
 
 const App: React.FC = (): JSX.Element => (
   <>
