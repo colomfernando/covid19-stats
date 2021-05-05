@@ -13,8 +13,10 @@ const Search = (): JSX.Element => {
   };
 
   useEffect(() => {
-    getCases({ country: 'France' }).then(console.log);
-  }, []);
+    if (!inputValue || inputValue.length < 3) return;
+    const parseCountry = `${inputValue[0].toUpperCase()}${inputValue.slice(1)}`;
+    getCases({ country: parseCountry }).then(console.log);
+  }, [inputValue]);
 
   return (
     <Styles.Wrapper>
