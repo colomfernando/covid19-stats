@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputSearch from 'components/InputSearch';
+import { getCases } from 'api';
 import Styles from './styles';
 
 const Search = (): JSX.Element => {
@@ -10,6 +11,10 @@ const Search = (): JSX.Element => {
     const { value } = target;
     setInputValue(value);
   };
+
+  useEffect(() => {
+    getCases().then(console.log);
+  }, []);
 
   return (
     <Styles.Wrapper>
