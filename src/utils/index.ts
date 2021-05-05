@@ -28,4 +28,16 @@ export const validateArr = (arr: [] = []): boolean => arr instanceof Array;
  * @returns boolean
  * @example validateString('fizzmod') // true
  */
-export const validateString = (str = ''): boolean => typeof str === 'string';
+export const validateString = (str = ''): boolean =>
+  !!(str && typeof str === 'string');
+
+/**
+ * @name validateNumber
+ * @private
+ * @description return if arg is a valid number
+ * @param {number} number
+ * @example validateNumber('fizzmod') // false
+ * @example validateNumber(12) // true
+ */
+export const validateNumber = (num: number): boolean =>
+  typeof num === 'number' && !Number.isNaN(Number(num));

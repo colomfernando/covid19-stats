@@ -1,4 +1,5 @@
 import React from 'react';
+import Styles from './styles';
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
@@ -16,7 +17,7 @@ const InputSearch = ({
   onKeyPress,
 }: Props): JSX.Element => {
   return (
-    <input
+    <Styles.Input
       type={type}
       value={value}
       placeholder={placeholder}

@@ -1,10 +1,20 @@
-import { validateObj } from 'utils';
+import { validateObj, validateString } from 'utils';
 
-interface IQueryParam {
+export type QueryParam = {
   country?: string;
-}
+  ab?: string;
+  status?: string;
+};
 
-export const getQueries = (params: IQueryParam): string => {
+export const getQueries = (params: QueryParam): string => {
   if (!validateObj(params)) return '';
-  return 'test';
+  const { country, ab, status } = params;
+  const queryArr = [
+    validateString(country) ? `country=${country}` : '',
+    validateString(ab) ? `ab=${ab}` : '',
+    validateString(status) ? `status=${status}` : '',
+  ].filter(Boolean);
+
+  if (queryArr.length) return `?${queryArr.join('&')}`;
+  return '';
 };

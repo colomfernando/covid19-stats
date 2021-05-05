@@ -13,7 +13,7 @@ const Search = (): JSX.Element => {
   };
 
   useEffect(() => {
-    getCases().then(console.log);
+    getCases({ country: 'France' }).then(console.log);
   }, []);
 
   return (
