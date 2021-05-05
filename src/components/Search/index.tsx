@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputSearch from 'components/InputSearch';
 import Styles from './styles';
 
-const Search: React.FC = () => {
+const Search = (): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
