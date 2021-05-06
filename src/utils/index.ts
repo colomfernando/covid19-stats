@@ -41,3 +41,27 @@ export const validateString = (str = ''): boolean =>
  */
 export const validateNumber = (num: number): boolean =>
   typeof num === 'number' && !Number.isNaN(Number(num));
+
+/**
+ * @name debounce
+ * @private
+ * @description function to delay execution of function
+ * @param {function} func - function to execute
+ * @param {number} [wait="100"] - time for wait execution
+ * @returns function to execute
+ */
+export function debounce(
+  func: (...args: never[]) => void,
+  wait = 100
+): () => void {
+  let timeout: ReturnType<typeof setTimeout> | null;
+  return function (this: typeof debounce, ...args) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const context = this;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
+}
