@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import InputSearch from 'components/InputSearch';
+import Select from 'components/Select';
 import { getCases } from 'api';
 import { debounce } from 'utils';
 import Styles from './styles';
+
+const selectOptions = [
+  { label: 'Cases', value: 'cases' },
+  { label: 'History', value: 'history' },
+  { label: 'Vaccines', value: 'vaccines' },
+];
 
 const Search = (): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -33,6 +40,11 @@ const Search = (): JSX.Element => {
         placeholder="Country"
         onChange={handleOnChange}
         value={inputValue}
+      />
+      <Select
+        options={selectOptions}
+        defaultValue={selectOptions[0]}
+        onChange={({ value }): void => console.log(value)}
       />
     </Styles.Wrapper>
   );

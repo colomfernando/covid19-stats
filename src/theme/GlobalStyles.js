@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import palette from 'theme/palette';
 
 const GlobalStyle = createGlobalStyle`
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -32,6 +33,7 @@ html {
 body {
   margin: 0;
 	font-family: 'Montserrat', sans-serif;
+	background-color: ${palette.grey[50]}
 }
 
 /**
