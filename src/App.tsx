@@ -1,5 +1,6 @@
 import React from 'react';
 import GlobalStyles from 'theme/GlobalStyles';
+import { StoreProvider } from 'store';
 import Header from 'components/Header';
 import Search from 'components/Search';
 import Cases from 'components/Cases';
@@ -13,8 +14,9 @@ const casesData = {
   recovered: 2817165,
   sq_km_area: 2780400,
 };
+
 const App: React.FC = () => (
-  <>
+  <StoreProvider>
     <GlobalStyles />
     <div>
       <Header>
@@ -26,7 +28,7 @@ const App: React.FC = () => (
         <Cases {...casesData} />
       </div>
     </div>
-  </>
+  </StoreProvider>
 );
 
 export default App;
