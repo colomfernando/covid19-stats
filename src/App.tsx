@@ -5,11 +5,13 @@ import Search from 'components/Search';
 import Cases from 'components/Cases';
 
 const casesData = {
-  confirmed: 3559222,
-  deaths: 78726,
-  population: 46354321,
-  recovered: 150376,
-  sq_km_area: 505992,
+  confirmed: 3147740,
+  continent: 'South America',
+  country: 'Argentina',
+  deaths: 67325,
+  population: 44271041,
+  recovered: 2817165,
+  sq_km_area: 2780400,
 };
 const App: React.FC = () => (
   <>

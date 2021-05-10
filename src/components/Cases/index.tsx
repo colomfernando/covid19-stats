@@ -1,5 +1,7 @@
 import React from 'react';
 import InfoCard from 'components/InfoCard';
+import Bar from 'components/Bar';
+// import Styles from './styles';
 
 interface Props {
   confirmed: number;
@@ -16,10 +18,25 @@ const Cases: React.FC<Props> = ({
   return (
     <InfoCard title="Cases">
       <div>
-        <p>{`confirmed ${confirmed}`}</p>
-        <p>{`deaths ${deaths}`}</p>
-        <p>{`population ${population}`}</p>
-        <p>{`recorered ${recovered}`}</p>
+        <Bar
+          color="secondary"
+          type="cases"
+          total={population}
+          value={confirmed}
+        />
+        <Bar
+          color="secondary"
+          type="deaths"
+          total={population}
+          value={deaths}
+        />
+
+        <Bar
+          color="primary"
+          type="recovered"
+          total={population}
+          value={recovered}
+        />
       </div>
     </InfoCard>
   );

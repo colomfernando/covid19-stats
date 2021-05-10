@@ -11,6 +11,7 @@ const InfoCard: React.FC<IProps> = ({ title, children, ...props }) => {
   return (
     <Styles.Wrapper {...props}>
       <Styles.Title>{title}</Styles.Title>
+      <Styles.Line />
       {children}
     </Styles.Wrapper>
   );

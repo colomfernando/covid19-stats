@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
  */
 
 html {
-  line-height: 1.15; /* 1 */
+  line-height: 1; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 	box-sizing: border-box;
 	font-size: 16px;
@@ -56,6 +56,10 @@ p {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
 }
 
 /* Grouping content
