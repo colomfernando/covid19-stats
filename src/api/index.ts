@@ -12,7 +12,7 @@ interface ICase {
   population: number;
   sq_km_area: number;
   life_expectancy: string;
-  elevation_in_meters: null;
+  elevation_in_meters: number;
   continent: string;
   abbreviation: string;
   location: string;
@@ -23,19 +23,13 @@ interface ICase {
   updated: string;
 }
 
-interface ICases {
-  [key: string]: {
-    [key: string]: ICase;
-  };
-}
-
-interface IError {
+export interface IError {
   message: string;
 }
 
 export const getCases = async (
   params?: QueryParam
-): Promise<ICases | IError> => {
+): Promise<ICase | IError> => {
   try {
     const queries = params && validateObj(params) ? getQueries(params) : '';
     const { data } = await axios(`${BASE_URL}/cases${queries}`);
@@ -44,7 +38,10 @@ export const getCases = async (
 
     if (queries.indexOf('country' || 'ad') && !('All' in data))
       throw new Error('There is no data to show');
-    return data;
+    const { All: response } = data;
+    if (!validateObj(response)) throw new Error('There is no data to show');
+
+    return response;
   } catch (reason) {
     return { message: reason.message };
   }
