@@ -18,7 +18,7 @@ export const validateObj = <T>(obj: Record<string, T> = {}): boolean =>
  * @returns boolean
  * @example validateArr([1,2,3]) // true
  */
-export const validateArr = (arr: [] = []): boolean => arr instanceof Array;
+export const validateArr = <T>(arr: T[] = []): boolean => arr instanceof Array;
 
 /**
  * @name validateString

@@ -28,7 +28,11 @@ export interface ISetLoadingCasesAction extends IActions {
   payload: boolean;
 }
 
-export type Actions = IGetCasesAction | ISetLoadingCasesAction;
+export interface ISetCountries extends IActions {
+  payload: string[];
+}
+
+export type Actions = IGetCasesAction | ISetLoadingCasesAction | ISetCountries;
 
 export interface ILoading {
   cases: boolean;
@@ -39,4 +43,5 @@ export interface ILoading {
 export interface IState {
   cases: Record<string, unknown> | IGetCasesPayload;
   loading: ILoading;
+  countries: string[];
 }

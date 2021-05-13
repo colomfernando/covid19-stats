@@ -4,6 +4,7 @@ import { IState, Actions } from './interfaces';
 
 const initialState = {
   cases: {},
+  countries: [],
   loading: {
     cases: false,
     history: false,

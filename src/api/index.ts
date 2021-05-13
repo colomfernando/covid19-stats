@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { getQueries, QueryParam } from 'api/utils';
 import { validateObj } from 'utils';
+import localStorage from 'browser-localstorage-expire';
 
+const localCache = localStorage();
 const BASE_URL = 'https://covid-api.mmediagroup.fr/v1/';
 
 interface ICase {
@@ -42,6 +44,23 @@ export const getCases = async (
     if (!validateObj(response)) throw new Error('There is no data to show');
 
     return response;
+  } catch (reason) {
+    return { message: reason.message };
+  }
+};
+
+export const getCountries = async (): Promise<string[] | IError> => {
+  try {
+    const cache = localCache.getItem('countries');
+    if (cache) return cache;
+    const { data } = await axios(`${BASE_URL}/cases`);
+    if (!validateObj(data) || !Object.keys(data).length)
+      throw new Error('There is no data to show');
+
+    const countries = Object.keys(data);
+    localCache.setItem('countries', countries, 10);
+
+    return countries;
   } catch (reason) {
     return { message: reason.message };
   }
