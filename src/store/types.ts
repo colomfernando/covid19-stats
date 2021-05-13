@@ -1,3 +1,4 @@
 const GET_CASES = 'GET_CASES';
+const SET_LOADING_CASES = 'SET_LOADING_CASES';
 
-export default { GET_CASES };
+export default { GET_CASES, SET_LOADING_CASES };

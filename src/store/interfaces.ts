@@ -14,14 +14,29 @@ export interface IGetCasesPayload {
   capital_city: string;
   lat: string;
   long: string;
-  updated?: string;
+  updated: string;
 }
 
-export interface IGetCasesAction {
+export interface IActions {
   type: string;
-  payload: Record<string, unknown> | IGetCasesPayload;
+}
+export interface IGetCasesAction extends IActions {
+  payload: IGetCasesPayload;
+}
+
+export interface ISetLoadingCasesAction extends IActions {
+  payload: boolean;
+}
+
+export type Actions = IGetCasesAction | ISetLoadingCasesAction;
+
+export interface ILoading {
+  cases: boolean;
+  history: boolean;
+  vaccines: boolean;
 }
 
 export interface IState {
   cases: Record<string, unknown> | IGetCasesPayload;
+  loading: ILoading;
 }
