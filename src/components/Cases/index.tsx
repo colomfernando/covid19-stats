@@ -3,14 +3,14 @@ import InfoCard from 'components/InfoCard';
 import Bar from 'components/Bar';
 import Styles from './styles';
 
-interface Props {
+interface IProps {
   loading?: boolean;
   confirmed?: number;
   deaths?: number;
   population?: number;
   recovered?: number;
 }
-const Cases: React.FC<Props | null> = ({
+const Cases: React.FC<IProps | null> = ({
   loading,
   confirmed,
   deaths,
