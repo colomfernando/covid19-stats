@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 
 const WrapperText = styled.div`
@@ -54,7 +54,7 @@ const Progress = styled.div<ProgressProps>`
 `;
 
 const BaseText = styled.p`
-  font-size: 12px;
+  font-size: 13px;
   color: ${palette.common.black};
 `;
 

@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import LoadingComponent from 'components/Loading';
 
-const Title = styled.p``;
+const Loading = styled(LoadingComponent)`
+  margin: auto;
+`;
 
-export default { Title };
+export default { Loading };

@@ -20,7 +20,9 @@ const Search = (): JSX.Element => {
   const handleGetCases = async (value: string) => {
     if (!value || value.length < 3) return;
     dispatch(setLoadingCasesAction(true));
-    const parseCountry = `${value[0].toUpperCase()}${value.slice(1)}`;
+    const parseCountry = `${value[0].toUpperCase()}${value
+      .slice(1)
+      .toLowerCase()}`;
     const response = await getCases({ country: parseCountry });
 
     if ('message' in response) {

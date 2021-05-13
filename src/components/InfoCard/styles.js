@@ -3,6 +3,8 @@ import palette from 'theme/palette';
 
 const Wrapper = styled.div`
   display: flex;
+  width: 100%;
+  min-height: 250px;
   max-width: 300px;
   flex-flow: column nowrap;
   border-radius: 20px;
@@ -19,13 +21,5 @@ const Title = styled.h3`
   margin-bottom: 10px;
 `;
 
-const Line = styled.div`
-  width: calc(100% + 40px);
-  margin-left: -20px;
-  height: 1px;
-  background-color: ${palette.grey[300]};
-  margin-bottom: 15px;
-`;
-
 Wrapper.displayName = 'InfoCard';
-export default { Wrapper, Title, Line };
+export default { Wrapper, Title };

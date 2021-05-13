@@ -32,7 +32,7 @@ html {
 
 body {
   margin: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Rubik', sans-serif;
 	background-color: ${palette.grey[50]}
 }
 
