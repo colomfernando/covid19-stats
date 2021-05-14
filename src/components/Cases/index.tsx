@@ -5,14 +5,14 @@ import Bar from 'components/Bar';
 import Styles from './styles';
 
 interface IProps {
-  loading?: boolean;
-  confirmed?: number;
-  deaths?: number;
-  population?: number;
-  recovered?: number;
+  loading: boolean;
+  confirmed?: number | undefined;
+  deaths?: number | undefined;
+  population?: number | undefined;
+  recovered?: number | undefined;
 }
-const Cases: React.FC<IProps | null> = ({
-  loading,
+const Cases: React.FC<IProps> = ({
+  loading = false,
   confirmed,
   deaths,
   population,
@@ -24,6 +24,9 @@ const Cases: React.FC<IProps | null> = ({
 
   if (!validProps.length && !loading) return null;
 
+  const percent = (value: number, total: number): number =>
+    (100 / total) * value;
+
   return (
     <InfoCard title="Cases">
       {loading ? (
@@ -31,7 +34,11 @@ const Cases: React.FC<IProps | null> = ({
       ) : (
         <>
           <Bar
-            color="secondary"
+            color={
+              percent(confirmed as number, population as number) >= 10
+                ? 'primary'
+                : 'secondary'
+            }
             type="cases"
             total={population}
             value={confirmed}
@@ -44,9 +51,13 @@ const Cases: React.FC<IProps | null> = ({
           />
 
           <Bar
-            color="primary"
+            color={
+              percent(recovered as number, confirmed as number) >= 50
+                ? 'primary'
+                : 'secondary'
+            }
             type="recovered"
-            total={population}
+            total={confirmed}
             value={recovered}
           />
         </>

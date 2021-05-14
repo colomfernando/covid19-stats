@@ -10,8 +10,9 @@ interface IProps {
 }
 
 const Bar: React.FC<IProps> = ({ type, total, value, color }) => {
-  if (!total || !validateNumber(total) || !value || !validateNumber(value))
-    return null;
+  if (total === undefined || value === undefined) return null;
+
+  if (!validateNumber(total) || !validateNumber(value)) return null;
   const percent = (100 / total) * value;
   return (
     <Styles.Wrapper>

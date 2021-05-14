@@ -27,7 +27,7 @@ const Header: React.FC = () => {
   return (
     <Styles.Wrapper>
       <Styles.Title>Covid 19 Stats</Styles.Title>
-      {countries && countries.length && <Select options={optionsSelect} />}
+      {!!(countries && countries.length) && <Select options={optionsSelect} />}
     </Styles.Wrapper>
   );
 };

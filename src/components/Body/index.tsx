@@ -5,7 +5,15 @@ import Cases from 'components/Cases';
 
 const Body: React.FC = () => {
   const [store] = useStore();
-  const { cases = {}, loading } = store;
+  const {
+    cases = {
+      confirmed: undefined,
+      deaths: undefined,
+      population: undefined,
+      recovered: undefined,
+    },
+    loading,
+  } = store;
 
   return (
     <Styles.Wrapper>
