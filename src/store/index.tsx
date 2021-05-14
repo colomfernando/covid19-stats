@@ -3,6 +3,7 @@ import reducer from './reducer';
 import { IState, Actions } from './interfaces';
 
 const initialState = {
+  selectedCountry: '',
   cases: {},
   countries: [],
   global: {},

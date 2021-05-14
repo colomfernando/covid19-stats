@@ -1,36 +1,36 @@
 import types from './types';
-import {
-  IGetCasesAction,
-  IGetCasesPayload,
-  ISetLoadingAction,
-  ISetCountries,
-  ISetGlobalsAction,
-  IGlobalPayload,
-} from './interfaces';
+import { IGetCasesPayload, IGlobalPayload, IAction } from './interfaces';
 
-export const getCasesAction = (payload: IGetCasesPayload): IGetCasesAction => ({
+export const getCasesAction = (
+  payload: IGetCasesPayload
+): IAction<IGlobalPayload> => ({
   type: types.GET_CASES,
   payload,
 });
 
-export const setLoadingCasesAction = (bool: boolean): ISetLoadingAction => ({
+export const setLoadingCasesAction = (bool: boolean): IAction<boolean> => ({
   type: types.SET_LOADING_CASES,
   payload: bool,
 });
 
-export const setLoadingGlobalAction = (bool: boolean): ISetLoadingAction => ({
+export const setLoadingGlobalAction = (bool: boolean): IAction<boolean> => ({
   type: types.SET_LOADING_GLOBAL,
   payload: bool,
 });
 
-export const setCountriesAction = (countries: string[]): ISetCountries => ({
+export const setCountriesAction = (countries: string[]): IAction<string[]> => ({
   type: types.SET_COUNTRIES,
   payload: countries,
 });
 
+export const setSelectedCountryAction = (country: string): IAction<string> => ({
+  type: types.SET_SELECTED_COUNTRY,
+  payload: country,
+});
+
 export const setGlobalsAction = (
   global: IGlobalPayload
-): ISetGlobalsAction => ({
+): IAction<IGlobalPayload> => ({
   type: types.SET_GLOBALS,
   payload: global,
 });

@@ -29,7 +29,7 @@ const Stats: React.FC<IStatsProps> = ({
     (100 / total) * value;
 
   return (
-    <InfoCard title={title}>
+    <InfoCard title={title} loading={loading}>
       {loading ? (
         <Styles.Loading loading={loading} />
       ) : (

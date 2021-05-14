@@ -10,10 +10,19 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
-const Title = styled.h3`
+interface ITitleProps {
+  loading: boolean;
+}
+const Title = styled.h3<ITitleProps>`
   font-size: 20px;
   font-weight: 500;
   color: ${palette.common.black};
+  ${({ loading }) =>
+    loading &&
+    `
+		background-color: ${palette.grey[300]};
+		color: transparent;
+	`}
 `;
 
 const WrapperTitle = styled.div`

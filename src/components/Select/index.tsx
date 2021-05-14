@@ -3,7 +3,11 @@ import { getCases } from 'api';
 import useStore from 'store';
 import { debounce } from 'utils';
 import { IGetCasesPayload } from 'store/interfaces';
-import { getCasesAction, setLoadingCasesAction } from 'store/actions';
+import {
+  getCasesAction,
+  setLoadingCasesAction,
+  setSelectedCountryAction,
+} from 'store/actions';
 import Styles from './styles';
 
 interface IOption {
@@ -33,7 +37,9 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
       dispatch(setLoadingCasesAction(false));
       return dispatch(getCasesAction({} as IGetCasesPayload));
     }
+
     dispatch(getCasesAction(response));
+    dispatch(setSelectedCountryAction(value));
     dispatch(setLoadingCasesAction(false));
   };
 

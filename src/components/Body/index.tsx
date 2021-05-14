@@ -13,13 +13,14 @@ const Body: React.FC = () => {
       recovered: undefined,
     },
     global,
+    selectedCountry,
     loading,
   } = store;
 
   return (
     <Styles.Wrapper>
       <Stats title="Global" {...global} loading={loading.global} />
-      <Stats {...cases} title="Cases" loading={loading.cases} />
+      <Stats {...cases} title={selectedCountry} loading={loading.cases} />
     </Styles.Wrapper>
   );
 };

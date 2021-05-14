@@ -23,31 +23,17 @@ export interface IGlobalPayload {
   recovered: number;
   deaths: number;
 }
-
-export interface IActions {
+export interface IAction<T> {
   type: string;
-}
-export interface IGetCasesAction extends IActions {
-  payload: IGetCasesPayload;
-}
-
-export interface ISetLoadingAction extends IActions {
-  payload: boolean;
-}
-
-export interface ISetCountries extends IActions {
-  payload: string[];
-}
-
-export interface ISetGlobalsAction extends IActions {
-  payload: IGlobalPayload;
+  payload: T;
 }
 
 export type Actions =
-  | IGetCasesAction
-  | ISetLoadingAction
-  | ISetCountries
-  | ISetGlobalsAction;
+  | IAction<IGetCasesPayload>
+  | IAction<boolean>
+  | IAction<string[]>
+  | IAction<string>
+  | IAction<IGlobalPayload>;
 
 export interface ILoading {
   cases: boolean;
@@ -57,6 +43,7 @@ export interface ILoading {
 }
 
 export interface IState {
+  selectedCountry: string;
   cases: Record<string, unknown> | IGetCasesPayload;
   global: Record<string, unknown> | IGlobalPayload;
   loading: ILoading;

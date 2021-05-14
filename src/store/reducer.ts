@@ -23,6 +23,9 @@ const reducer = (state: IState, action: Actions): IState => {
 
     case types.SET_COUNTRIES:
       return { ...state, countries: action.payload } as IState;
+
+    case types.SET_SELECTED_COUNTRY:
+      return { ...state, selectedCountry: action.payload } as IState;
     default:
       return state;
   }
