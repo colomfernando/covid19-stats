@@ -17,6 +17,13 @@ export interface IGetCasesPayload {
   updated: string;
 }
 
+export interface IGlobalPayload {
+  population: number;
+  confirmed: number;
+  recovered: number;
+  deaths: number;
+}
+
 export interface IActions {
   type: string;
 }
@@ -32,7 +39,15 @@ export interface ISetCountries extends IActions {
   payload: string[];
 }
 
-export type Actions = IGetCasesAction | ISetLoadingCasesAction | ISetCountries;
+export interface ISetGlobalsAction extends IActions {
+  payload: IGlobalPayload;
+}
+
+export type Actions =
+  | IGetCasesAction
+  | ISetLoadingCasesAction
+  | ISetCountries
+  | ISetGlobalsAction;
 
 export interface ILoading {
   cases: boolean;

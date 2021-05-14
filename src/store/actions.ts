@@ -4,6 +4,8 @@ import {
   IGetCasesPayload,
   ISetLoadingCasesAction,
   ISetCountries,
+  ISetGlobalsAction,
+  IGlobalPayload,
 } from './interfaces';
 
 export const getCasesAction = (payload: IGetCasesPayload): IGetCasesAction => ({
@@ -21,4 +23,11 @@ export const setLoadingCasesAction = (
 export const setCountriesAction = (countries: string[]): ISetCountries => ({
   type: types.SET_COUNTRIES,
   payload: countries,
+});
+
+export const setGlobalsAction = (
+  global: IGlobalPayload
+): ISetGlobalsAction => ({
+  type: types.SET_GLOBALS,
+  payload: global,
 });

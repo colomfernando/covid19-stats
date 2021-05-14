@@ -15,7 +15,10 @@ interface IProps {
 }
 
 const Select: React.FC<IProps> = ({ options, ...props }) => {
-  const [selectValue, setSelectValue] = useState<IOption>({} as IOption);
+  const [selectValue, setSelectValue] = useState<IOption>({
+    label: 'Select Country',
+    value: '',
+  });
   const [, dispatch] = useStore();
 
   const handleOnChange = (option: IOption): void => setSelectValue(option);

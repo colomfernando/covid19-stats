@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getQueries, QueryParam } from 'api/utils';
 import { validateObj } from 'utils';
+import { IGlobalPayload } from 'store/interfaces';
 import localStorage from 'browser-localstorage-expire';
 
 const localCache = localStorage();
@@ -25,8 +26,17 @@ interface ICase {
   updated: string;
 }
 
+export interface IInitialData {
+  global: IGlobalPayload;
+  countries: string[];
+}
 export interface IError {
   message: string;
+}
+
+export interface IErrorInitialData extends IError {
+  countries: [];
+  Global: Record<string, never>;
 }
 
 export const getCases = async (
@@ -51,19 +61,26 @@ export const getCases = async (
   }
 };
 
-export const getCountries = async (): Promise<string[] | IError> => {
+export const getInitialData = async (): Promise<
+  IInitialData | IErrorInitialData
+> => {
   try {
-    const cache = localCache.getItem('countries');
+    const cache = localCache.getItem('initialData');
     if (cache) return cache;
+
     const { data } = await axios(`${BASE_URL}/cases`);
     if (!validateObj(data) || !Object.keys(data).length)
       throw new Error('There is no data to show');
 
+    const { Global } = data;
+    const { All: global } = Global;
     const countries = Object.keys(data);
-    localCache.setItem('countries', countries, 10);
+    const initialData = { countries, global };
 
-    return countries;
+    localCache.setItem('initialData', initialData, 5);
+
+    return initialData;
   } catch (reason) {
-    return { message: reason.message };
+    return { message: reason.message, countries: [], Global: {} };
   }
 };

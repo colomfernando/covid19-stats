@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import useStore from 'store';
-import { validateArr } from 'utils';
-import { setCountriesAction } from 'store/actions';
+import { setCountriesAction, setGlobalsAction } from 'store/actions';
 import Select from 'components/Select';
-import { getCountries } from 'api';
+import { getInitialData } from 'api';
 import Styles from './styles';
 
 const Header: React.FC = () => {
@@ -11,11 +10,14 @@ const Header: React.FC = () => {
   const { countries } = state;
 
   const setCountries = async (): Promise<void> => {
-    const countries = await getCountries();
-    if ('message' in countries || !validateArr(countries)) return;
+    const initialData = await getInitialData();
 
+    if ('message' in initialData) return;
+    const { global, countries } = initialData;
+    dispatch(setGlobalsAction(global));
     return dispatch(setCountriesAction(countries));
   };
+
   const optionsSelect =
     countries && countries.length
       ? countries.map((option) => ({ value: option, label: option }))
@@ -26,7 +28,6 @@ const Header: React.FC = () => {
   }, []);
   return (
     <Styles.Wrapper>
-      <Styles.Title>Covid 19 Stats</Styles.Title>
       {!!(countries && countries.length) && <Select options={optionsSelect} />}
     </Styles.Wrapper>
   );
