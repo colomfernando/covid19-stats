@@ -1,24 +1,25 @@
 import React from 'react';
 import InfoCard from 'components/InfoCard';
 import { validateNumber } from 'utils';
-import Bar from 'components/Bar';
 import Styles from './styles';
 
-interface IProps {
+interface IStatsProps {
+  title: string;
   loading: boolean;
   confirmed?: number | undefined;
   deaths?: number | undefined;
   population?: number | undefined;
   recovered?: number | undefined;
 }
-const Cases: React.FC<IProps> = ({
+const Stats: React.FC<IStatsProps> = ({
+  title,
   loading = false,
   confirmed,
   deaths,
   population,
   recovered,
 }) => {
-  const validProps = [confirmed, deaths, population, recovered].filter((prop) =>
+  const validProps = [population, confirmed, deaths, recovered].filter((prop) =>
     validateNumber(prop as number)
   );
 
@@ -28,12 +29,12 @@ const Cases: React.FC<IProps> = ({
     (100 / total) * value;
 
   return (
-    <InfoCard title="Cases">
+    <InfoCard title={title}>
       {loading ? (
         <Styles.Loading loading={loading} />
       ) : (
         <>
-          <Bar
+          <Styles.Bar
             color={
               percent(confirmed as number, population as number) >= 10
                 ? 'primary'
@@ -43,14 +44,14 @@ const Cases: React.FC<IProps> = ({
             total={population}
             value={confirmed}
           />
-          <Bar
+          <Styles.Bar
             color="secondary"
             type="deaths"
             total={population}
             value={deaths}
           />
 
-          <Bar
+          <Styles.Bar
             color={
               percent(recovered as number, confirmed as number) >= 50
                 ? 'primary'
@@ -66,4 +67,4 @@ const Cases: React.FC<IProps> = ({
   );
 };
 
-export default Cases;
+export default Stats;

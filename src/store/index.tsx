@@ -8,6 +8,7 @@ const initialState = {
   global: {},
   loading: {
     cases: false,
+    global: false,
     history: false,
     vaccines: false,
   },

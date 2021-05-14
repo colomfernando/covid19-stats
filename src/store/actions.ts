@@ -2,7 +2,7 @@ import types from './types';
 import {
   IGetCasesAction,
   IGetCasesPayload,
-  ISetLoadingCasesAction,
+  ISetLoadingAction,
   ISetCountries,
   ISetGlobalsAction,
   IGlobalPayload,
@@ -13,10 +13,13 @@ export const getCasesAction = (payload: IGetCasesPayload): IGetCasesAction => ({
   payload,
 });
 
-export const setLoadingCasesAction = (
-  bool: boolean
-): ISetLoadingCasesAction => ({
+export const setLoadingCasesAction = (bool: boolean): ISetLoadingAction => ({
   type: types.SET_LOADING_CASES,
+  payload: bool,
+});
+
+export const setLoadingGlobalAction = (bool: boolean): ISetLoadingAction => ({
+  type: types.SET_LOADING_GLOBAL,
   payload: bool,
 });
 

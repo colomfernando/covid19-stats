@@ -1,7 +1,7 @@
 import React from 'react';
 import Styles from './styles';
 import useStore from 'store';
-import Cases from 'components/Cases';
+import Stats from 'components/Stats';
 
 const Body: React.FC = () => {
   const [store] = useStore();
@@ -12,12 +12,14 @@ const Body: React.FC = () => {
       population: undefined,
       recovered: undefined,
     },
+    global,
     loading,
   } = store;
 
   return (
     <Styles.Wrapper>
-      <Cases {...cases} loading={loading.cases} />
+      <Stats title="Global" {...global} loading={loading.global} />
+      <Stats {...cases} title="Cases" loading={loading.cases} />
     </Styles.Wrapper>
   );
 };

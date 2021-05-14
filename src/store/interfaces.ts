@@ -31,7 +31,7 @@ export interface IGetCasesAction extends IActions {
   payload: IGetCasesPayload;
 }
 
-export interface ISetLoadingCasesAction extends IActions {
+export interface ISetLoadingAction extends IActions {
   payload: boolean;
 }
 
@@ -45,18 +45,20 @@ export interface ISetGlobalsAction extends IActions {
 
 export type Actions =
   | IGetCasesAction
-  | ISetLoadingCasesAction
+  | ISetLoadingAction
   | ISetCountries
   | ISetGlobalsAction;
 
 export interface ILoading {
   cases: boolean;
+  global: boolean;
   history: boolean;
   vaccines: boolean;
 }
 
 export interface IState {
   cases: Record<string, unknown> | IGetCasesPayload;
+  global: Record<string, unknown> | IGlobalPayload;
   loading: ILoading;
   countries: string[];
 }

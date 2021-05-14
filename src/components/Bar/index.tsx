@@ -2,20 +2,20 @@ import React from 'react';
 import { validateNumber } from 'utils';
 import Styles from './styles';
 
-interface IProps {
+export interface IBarProps {
   total: number | undefined;
   value: number | undefined;
   color: string;
   type: string;
 }
 
-const Bar: React.FC<IProps> = ({ type, total, value, color }) => {
+const Bar: React.FC<IBarProps> = ({ type, total, value, color, ...props }) => {
   if (total === undefined || value === undefined) return null;
 
   if (!validateNumber(total) || !validateNumber(value)) return null;
   const percent = (100 / total) * value;
   return (
-    <Styles.Wrapper>
+    <Styles.Wrapper {...props}>
       <Styles.WrapperText>
         <Styles.Title>{`${type}:`}</Styles.Title>
         <Styles.Text>{`${value.toLocaleString()} / ${total.toLocaleString()}`}</Styles.Text>

@@ -11,8 +11,11 @@ const InfoCard: React.FC<IProps> = ({ title, children, ...props }) => {
 
   return (
     <Styles.Wrapper {...props}>
-      <Styles.Title>{title}</Styles.Title>
-      {children}
+      <Styles.WrapperTitle>
+        <Styles.Bullet />
+        <Styles.Title>{title}</Styles.Title>
+      </Styles.WrapperTitle>
+      <Styles.WrapperChilds>{children}</Styles.WrapperChilds>
     </Styles.Wrapper>
   );
 };

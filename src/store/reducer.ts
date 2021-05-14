@@ -12,6 +12,12 @@ const reducer = (state: IState, action: Actions): IState => {
         ...{ loading: { ...state.loading, cases: action.payload } },
       } as IState;
 
+    case types.SET_LOADING_GLOBAL:
+      return {
+        ...state,
+        ...{ loading: { ...state.loading, global: action.payload } },
+      } as IState;
+
     case types.SET_GLOBALS:
       return { ...state, global: action.payload } as IState;
 
