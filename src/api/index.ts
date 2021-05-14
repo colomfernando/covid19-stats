@@ -35,11 +35,13 @@ export const getCases = async (
   try {
     const queries = params && validateObj(params) ? getQueries(params) : '';
     const { data } = await axios(`${BASE_URL}/cases${queries}`);
+
     if (!validateObj(data) || !Object.keys(data).length)
       throw new Error('There is no data to show');
 
     if (queries.indexOf('country' || 'ad') && !('All' in data))
       throw new Error('There is no data to show');
+
     const { All: response } = data;
     if (!validateObj(response)) throw new Error('There is no data to show');
 

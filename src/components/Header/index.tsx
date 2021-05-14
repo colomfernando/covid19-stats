@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import useStore from 'store';
 import { validateArr } from 'utils';
 import { setCountriesAction } from 'store/actions';
-import Search from 'components/Search';
 import Select from 'components/Select';
 import { getCountries } from 'api';
 import Styles from './styles';
@@ -10,7 +9,7 @@ import Styles from './styles';
 const Header: React.FC = () => {
   const [state, dispatch] = useStore();
   const { countries } = state;
-  console.log('countries :>> ', countries);
+
   const setCountries = async (): Promise<void> => {
     const countries = await getCountries();
     if ('message' in countries || !validateArr(countries)) return;
@@ -28,11 +27,7 @@ const Header: React.FC = () => {
   return (
     <Styles.Wrapper>
       <Styles.Title>Covid 19 Stats</Styles.Title>
-      {countries && countries.length ? (
-        <Select options={optionsSelect} />
-      ) : (
-        <Search />
-      )}
+      {countries && countries.length && <Select options={optionsSelect} />}
     </Styles.Wrapper>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import InfoCard from 'components/InfoCard';
+import { validateNumber } from 'utils';
 import Bar from 'components/Bar';
 import Styles from './styles';
 
@@ -17,8 +18,11 @@ const Cases: React.FC<IProps | null> = ({
   population,
   recovered,
 }) => {
-  if ((!confirmed || !deaths || !population || !recovered) && !loading)
-    return null;
+  const validProps = [confirmed, deaths, population, recovered].filter((prop) =>
+    validateNumber(prop as number)
+  );
+
+  if (!validProps.length && !loading) return null;
 
   return (
     <InfoCard title="Cases">
