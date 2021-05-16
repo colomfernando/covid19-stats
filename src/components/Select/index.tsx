@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getCases } from 'api';
+import { getData } from 'api';
 import useStore from 'store';
 import { debounce } from 'utils';
 import { IGetCasesPayload } from 'store/interfaces';
@@ -30,15 +30,16 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
   const handleGetCases = async (value: string) => {
     if (!value) return;
     dispatch(setLoadingCasesAction(true));
+    const handleApi = await getData({ type: 'vaccines', country: value });
+    console.log('handleApi :>> ', handleApi);
+    const responseCases = await getData({ type: 'cases', country: value });
 
-    const response = await getCases({ country: value });
-
-    if ('message' in response) {
+    if ('message' in responseCases) {
       dispatch(setLoadingCasesAction(false));
       return dispatch(getCasesAction({} as IGetCasesPayload));
     }
 
-    dispatch(getCasesAction(response));
+    dispatch(getCasesAction(responseCases as IGetCasesPayload));
     dispatch(setSelectedCountryAction(value));
     dispatch(setLoadingCasesAction(false));
   };

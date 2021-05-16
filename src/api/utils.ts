@@ -1,6 +1,7 @@
 import { validateObj, validateString } from 'utils';
 
 export type QueryParam = {
+  type: string;
   country?: string;
   ab?: string;
   status?: string;
