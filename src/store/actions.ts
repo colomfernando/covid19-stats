@@ -1,7 +1,7 @@
 import types from './types';
 import { IGetCasesPayload, IGlobalPayload, IAction } from './interfaces';
 
-export const getCasesAction = (
+export const setCasesAction = (
   payload: IGetCasesPayload
 ): IAction<IGlobalPayload> => ({
   type: types.GET_CASES,

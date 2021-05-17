@@ -88,10 +88,10 @@ export const getInitialData = async (): Promise<
 
     const { Global } = data;
     const { All: global } = Global;
-    const countries = Object.keys(data);
+    const countries = Object.keys(data).filter((key) => key !== 'Global');
     const initialData = { countries, global };
 
-    localCache.setItem('initialData', initialData, 5);
+    localCache.setItem('initialData', initialData, 2);
 
     return initialData;
   } catch (reason) {

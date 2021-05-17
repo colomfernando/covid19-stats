@@ -10,25 +10,22 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 
-interface ITitleProps {
-  loading: boolean;
-}
-const Title = styled.h3<ITitleProps>`
+const Title = styled.h3`
   font-size: 20px;
   font-weight: 500;
   color: ${palette.common.black};
-  ${({ loading }) =>
-    loading &&
-    `
-		background-color: ${palette.grey[300]};
-		color: transparent;
-	`}
 `;
 
 const WrapperTitle = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+`;
+
+const TitleSkeleton = styled.div`
+  background-color: ${palette.grey[300]};
+  width: 100px;
+  height: 20px;
 `;
 
 const WrapperChilds = styled.div`
@@ -52,4 +49,11 @@ const Bullet = styled.span`
 `;
 
 Wrapper.displayName = 'InfoCard';
-export default { Wrapper, Title, WrapperChilds, Bullet, WrapperTitle };
+export default {
+  Wrapper,
+  Title,
+  WrapperChilds,
+  Bullet,
+  WrapperTitle,
+  TitleSkeleton,
+};

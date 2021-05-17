@@ -18,8 +18,15 @@ const InfoCard: React.FC<IInfoCardProps> = ({
   return (
     <Styles.Wrapper {...props}>
       <Styles.WrapperTitle>
-        <Styles.Bullet />
-        <Styles.Title loading={loading}>{title}</Styles.Title>
+        {loading ? (
+          <Styles.TitleSkeleton />
+        ) : (
+          <>
+            {' '}
+            <Styles.Bullet />
+            <Styles.Title>{title}</Styles.Title>
+          </>
+        )}
       </Styles.WrapperTitle>
       <Styles.WrapperChilds>{children}</Styles.WrapperChilds>
     </Styles.Wrapper>

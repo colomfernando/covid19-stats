@@ -4,7 +4,7 @@ import useStore from 'store';
 import { debounce } from 'utils';
 import { IGetCasesPayload } from 'store/interfaces';
 import {
-  getCasesAction,
+  setCasesAction,
   setLoadingCasesAction,
   setSelectedCountryAction,
 } from 'store/actions';
@@ -36,10 +36,10 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
 
     if ('message' in responseCases) {
       dispatch(setLoadingCasesAction(false));
-      return dispatch(getCasesAction({} as IGetCasesPayload));
+      return dispatch(setCasesAction({} as IGetCasesPayload));
     }
 
-    dispatch(getCasesAction(responseCases as IGetCasesPayload));
+    dispatch(setCasesAction(responseCases as IGetCasesPayload));
     dispatch(setSelectedCountryAction(value));
     dispatch(setLoadingCasesAction(false));
   };
