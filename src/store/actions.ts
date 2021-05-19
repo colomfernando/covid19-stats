@@ -1,10 +1,22 @@
 import types from './types';
-import { IGetCasesPayload, IGlobalPayload, IAction } from './interfaces';
+import {
+  ICasesPayload,
+  IVaccinesPayload,
+  IGlobalPayload,
+  IAction,
+} from './interfaces';
 
 export const setCasesAction = (
-  payload: IGetCasesPayload
-): IAction<IGlobalPayload> => ({
-  type: types.GET_CASES,
+  payload: ICasesPayload
+): IAction<ICasesPayload> => ({
+  type: types.SET_CASES,
+  payload,
+});
+
+export const setVaccinesAction = (
+  payload: IVaccinesPayload
+): IAction<IVaccinesPayload> => ({
+  type: types.SET_VACCINES,
   payload,
 });
 

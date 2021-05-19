@@ -1,4 +1,4 @@
-export interface IGetCasesPayload {
+export interface ICasesPayload {
   confirmed: number;
   recovered: number;
   deaths: number;
@@ -17,6 +17,23 @@ export interface IGetCasesPayload {
   updated: string;
 }
 
+export interface IVaccinesPayload {
+  abbreviation: string;
+  administered: number;
+  capital_city: string;
+  continent: string;
+  country: string;
+  elevation_in_meters: number;
+  iso: number;
+  life_expectancy: string;
+  location: number;
+  people_partially_vaccinated: number;
+  people_vaccinated: number;
+  population: number;
+  sq_km_area: number;
+  updated: number;
+}
+
 export interface IGlobalPayload {
   population: number;
   confirmed: number;
@@ -29,7 +46,8 @@ export interface IAction<T> {
 }
 
 export type Actions =
-  | IAction<IGetCasesPayload>
+  | IAction<ICasesPayload>
+  | IAction<IVaccinesPayload>
   | IAction<boolean>
   | IAction<string[]>
   | IAction<string>
@@ -44,7 +62,8 @@ export interface ILoading {
 
 export interface IState {
   selectedCountry: string;
-  cases: Record<string, unknown> | IGetCasesPayload;
+  cases: Record<string, unknown> | ICasesPayload;
+  vaccines: Record<string, unknown> | IVaccinesPayload;
   global: Record<string, unknown> | IGlobalPayload;
   loading: ILoading;
   countries: string[];
