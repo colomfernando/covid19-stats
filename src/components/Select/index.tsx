@@ -2,10 +2,11 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { getApiData } from 'api';
 import useStore from 'store';
 import { debounce } from 'utils';
-import { ICasesPayload } from 'store/interfaces';
+import { ICasesPayload, IVaccinesPayload } from 'store/interfaces';
 import {
   setCasesAction,
-  setLoadingCasesAction,
+  setVaccinesAction,
+  setLoadingDataAction,
   setSelectedCountryAction,
 } from 'store/actions';
 import Styles from './styles';
@@ -29,29 +30,16 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
 
   const handleGetCases = async (value: string) => {
     if (!value) return;
-    dispatch(setLoadingCasesAction(true));
+    dispatch(setLoadingDataAction(true));
 
-    const test = await getApiData({ country: value });
-    console.log('test :>> ', test);
+    const { cases, vaccines } = await getApiData({
+      country: value,
+    });
 
-    // const responseCases = await getData({ type: 'cases', country: value });
-
-    // if ('message' in responseCases) {
-    //   dispatch(setLoadingCasesAction(false));
-    //   return dispatch(setCasesAction({} as ICasesPayload));
-    // }
-
-    // dispatch(setCasesAction(responseCases as ICasesPayload));
-    // dispatch(setSelectedCountryAction(value));
-    // dispatch(setLoadingCasesAction(false));
-
-    // const responseVaccines = await getData({
-    //   type: 'vaccines',
-    //   country: value,
-    // });
-
-    // if ('message' in responseVaccines) {
-    // }
+    dispatch(setLoadingDataAction(false));
+    dispatch(setSelectedCountryAction(value));
+    dispatch(setCasesAction(cases as ICasesPayload));
+    dispatch(setVaccinesAction(vaccines as IVaccinesPayload));
   };
 
   const debounceGetCases: (value: string) => void = useCallback(

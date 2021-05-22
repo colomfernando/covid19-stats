@@ -20,8 +20,8 @@ export const setVaccinesAction = (
   payload,
 });
 
-export const setLoadingCasesAction = (bool: boolean): IAction<boolean> => ({
-  type: types.SET_LOADING_CASES,
+export const setLoadingDataAction = (bool: boolean): IAction<boolean> => ({
+  type: types.SET_LOADING_DATA,
   payload: bool,
 });
 

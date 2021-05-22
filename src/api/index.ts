@@ -27,6 +27,11 @@ export interface IErrorInitialData extends IError {
   countries: [];
   Global: Record<string, never>;
 }
+
+export interface IErrorData extends IError {
+  cases: Record<string, never>;
+  vaccines: Record<string, never>;
+}
 interface IConfigApi {
   [key: string]: {
     endpoint: string;
@@ -52,7 +57,9 @@ export const getInitialData = async (): Promise<
     const cache = localCache.getItem('initialData');
     if (cache) return cache;
 
-    const { data } = await axios(`${BASE_URL}/cases`);
+    const { cases: casesConfig } = configApi;
+
+    const { data } = await axios(`${casesConfig.endpoint}`);
     if (!validateObj(data) || !Object.keys(data).length)
       throw new Error('There is no data to show');
 
@@ -71,7 +78,7 @@ export const getInitialData = async (): Promise<
 
 export const getApiData = async (
   params: QueryParam
-): Promise<IResponse | IError> => {
+): Promise<IResponse | IErrorData> => {
   try {
     if (!validateObj(params) || !Object.keys(params).length)
       throw new Error('params arg is invalid or null');
@@ -110,8 +117,8 @@ export const getApiData = async (
           : vaccinesResponse,
     };
 
-    return responses as IResponse;
+    return responses;
   } catch (reason) {
-    return { message: reason.message };
+    return { cases: {}, vaccines: {}, message: reason.message };
   }
 };

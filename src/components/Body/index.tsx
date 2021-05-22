@@ -5,22 +5,17 @@ import Stats from 'components/Stats';
 
 const Body: React.FC = () => {
   const [store] = useStore();
-  const {
-    cases = {
-      confirmed: undefined,
-      deaths: undefined,
-      population: undefined,
-      recovered: undefined,
-    },
-    global,
-    selectedCountry,
-    loading,
-  } = store;
+  const { cases, vaccines, global, selectedCountry, loading } = store;
+
+  console.log('cases :>> ', cases);
+  console.log('vaccines :>> ', vaccines);
+
+  const data = { ...cases, ...vaccines };
 
   return (
     <Styles.Wrapper>
       <Stats title="Global" {...global} loading={loading.global} />
-      <Stats {...cases} title={selectedCountry} loading={loading.cases} />
+      <Stats title={selectedCountry} {...cases} loading={loading.data} />
     </Styles.Wrapper>
   );
 };

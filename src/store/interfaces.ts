@@ -54,10 +54,8 @@ export type Actions =
   | IAction<IGlobalPayload>;
 
 export interface ILoading {
-  cases: boolean;
   global: boolean;
-  history: boolean;
-  vaccines: boolean;
+  data: boolean;
 }
 
 export interface IState {

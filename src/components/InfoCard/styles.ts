@@ -18,14 +18,9 @@ const Title = styled.h3`
 
 const WrapperTitle = styled.div`
   display: flex;
+  height: 20px;
   align-items: center;
   margin-bottom: 25px;
-`;
-
-const TitleSkeleton = styled.div`
-  background-color: ${palette.grey[300]};
-  width: 100px;
-  height: 20px;
 `;
 
 const WrapperChilds = styled.div`
@@ -55,5 +50,4 @@ export default {
   WrapperChilds,
   Bullet,
   WrapperTitle,
-  TitleSkeleton,
 };

@@ -5,13 +5,12 @@ import { IState, Actions } from './interfaces';
 const initialState = {
   selectedCountry: '',
   cases: {},
+  vaccines: {},
   countries: [],
   global: {},
   loading: {
-    cases: false,
+    data: false,
     global: false,
-    history: false,
-    vaccines: false,
   },
 };
 

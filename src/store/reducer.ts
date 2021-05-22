@@ -9,10 +9,10 @@ const reducer = (state: IState, action: Actions): IState => {
     case types.SET_VACCINES:
       return { ...state, vaccines: action.payload } as IState;
 
-    case types.SET_LOADING_CASES:
+    case types.SET_LOADING_DATA:
       return {
         ...state,
-        ...{ loading: { ...state.loading, cases: action.payload } },
+        ...{ loading: { ...state.loading, data: action.payload } },
       } as IState;
 
     case types.SET_LOADING_GLOBAL:
