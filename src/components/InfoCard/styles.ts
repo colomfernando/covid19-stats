@@ -25,7 +25,7 @@ const WrapperTitle = styled.div`
 
 const WrapperChilds = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 40px;
   min-height: 120px;
   border-radius: 10px;
