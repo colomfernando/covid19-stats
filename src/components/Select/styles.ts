@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import SelectComponent from 'react-select';
 import palette from 'theme/palette';
+import breakpoints from 'theme/breakpoints';
 
 const Select = styled(SelectComponent)`
   margin: 0 auto;
+  ${breakpoints.lg`
+		margin: initial;
+	`}
   .select__control {
     width: 300px;
     border-radius: 10px;

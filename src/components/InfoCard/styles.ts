@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import palette from 'theme/palette';
+import breakpoints from 'theme/breakpoints';
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,6 +9,9 @@ const Wrapper = styled.div`
   flex-flow: column nowrap;
   border-radius: 10px;
   padding: 20px;
+  ${breakpoints.md`
+		padding: 10px;
+	`}
 `;
 
 const Title = styled.h3`
@@ -32,6 +36,9 @@ const WrapperChilds = styled.div`
   padding: 30px;
   background: #fff;
   box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  ${breakpoints.md`
+		padding: 15px;
+	`}
 `;
 
 const Bullet = styled.span`

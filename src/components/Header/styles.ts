@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import breakpoints from 'theme/breakpoints';
 
 const Wrapper = styled.header`
   display: flex;
@@ -7,6 +8,11 @@ const Wrapper = styled.header`
   margin: 10px auto;
   align-items: center;
   padding: 20px;
+  ${breakpoints.lg`
+		max-width: initial;
+		flex-flow: column nowrap;
+		justify-content: center;
+	`}
 `;
 
 Wrapper.displayName = 'Header';
