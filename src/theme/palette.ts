@@ -1,3 +1,5 @@
+import { validateString } from 'utils';
+
 const palette = {
   primary: {
     light: '#7afad3',
@@ -35,15 +37,18 @@ const palette = {
   },
 };
 
-export const hexToRgb = (hex: string): string =>
-  hex
-    .replace(
-      /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
-      (m, r, g, b) => '#' + r + r + g + g + b + b
-    )
-    .substring(1)
-    .match(/.{2}/g)
-    .map((x) => parseInt(x, 16))
-    .join(',');
+export const hexToRgb = (hex: string): string => {
+  if (!hex || !validateString(hex)) return '';
+
+  const hexReplace = hex.replace(
+    /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
+    (_m, r, g, b) => '#' + r + r + g + g + b + b
+  );
+
+  const subString = hexReplace.substring(1);
+  const matchHex = subString.match(/.{2}/g) || [];
+  const joinHex = matchHex.map((x) => parseInt(x, 16)).join(',');
+  return joinHex;
+};
 
 export default palette;

@@ -7,6 +7,7 @@ import {
 } from 'store/actions';
 import Select from 'components/Select';
 import { getInitialData } from 'api';
+import Logo from 'components/Logo';
 import Styles from './styles';
 
 const Header: React.FC = () => {
@@ -37,6 +38,7 @@ const Header: React.FC = () => {
   }, []);
   return (
     <Styles.Wrapper>
+      <Logo />
       {!!(countries && countries.length) && <Select options={optionsSelect} />}
     </Styles.Wrapper>
   );

@@ -5,7 +5,6 @@ const Wrapper = styled.header`
   width: 100%;
   max-width: 1280px;
   margin: 10px auto;
-  justify-content: center;
   align-items: center;
   padding: 20px;
 `;

@@ -12,8 +12,10 @@ type Payloads =
   | Record<string, unknown>;
 
 interface ISchema {
-  value: keyof Payloads;
-  total: keyof Payloads;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  total: any;
   type: string;
   minColor: string;
   maxColor: string;

@@ -19,7 +19,7 @@ const Stats: React.FC<IStatsProps> = ({ title, loading = false, data }) => {
         <Styles.Loading loading={loading} />
       ) : (
         <>
-          {data.map((item, idx) => (
+          {data.map((item: IParseItem, idx: number) => (
             <Styles.Bar key={idx.toString()} {...item} />
           ))}
         </>

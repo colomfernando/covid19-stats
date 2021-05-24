@@ -3,6 +3,7 @@ import SelectComponent from 'react-select';
 import palette from 'theme/palette';
 
 const Select = styled(SelectComponent)`
+  margin: 0 auto;
   .select__control {
     width: 300px;
     border-radius: 10px;
