@@ -4,15 +4,12 @@ import useStore from 'store';
 import { parseData } from './utils';
 import Stats from 'components/Stats';
 
-// data Bar {type, value, total, color}
-
 const Body: React.FC = () => {
   const [store] = useStore();
   const { cases, vaccines, global, selectedCountry, loading } = store;
-  console.log('vaccines :>> ', vaccines);
+
   const dataCountry = parseData({ ...cases, ...vaccines });
   const dataGlobal = parseData(global);
-  console.log('global :>> ', global);
 
   return (
     <Styles.Wrapper>

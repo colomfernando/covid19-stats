@@ -36,10 +36,10 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
       country: value,
     });
 
-    dispatch(setLoadingDataAction(false));
     dispatch(setSelectedCountryAction(value));
     dispatch(setCasesAction(cases as ICasesPayload));
     dispatch(setVaccinesAction(vaccines as IVaccinesPayload));
+    dispatch(setLoadingDataAction(false));
   };
 
   const debounceGetCases: (value: string) => void = useCallback(

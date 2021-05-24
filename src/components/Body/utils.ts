@@ -5,11 +5,15 @@ import {
   IVaccinesPayload,
 } from 'store/interfaces';
 
-type indexKey = keyof ICasesPayload | keyof IVaccinesPayload;
+type Payloads =
+  | ICasesPayload
+  | IVaccinesPayload
+  | IGlobalPayload
+  | Record<string, unknown>;
 
 interface ISchema {
-  value: indexKey;
-  total: indexKey;
+  value: keyof Payloads;
+  total: keyof Payloads;
   type: string;
   minColor: string;
   maxColor: string;
@@ -116,13 +120,15 @@ export const parseItem = (
   };
 };
 
-export const parseData = (
-  data:
-    | ICasesPayload
-    | IVaccinesPayload
-    | IGlobalPayload
-    | Record<string, unknown>
-): IParseItem[] | [] => {
+const getDataByKey = <Obj extends Payloads, key extends keyof Obj>(
+  data: Obj,
+  key: key
+): number | null => {
+  if (!(key in data)) return null;
+  return Number(data[key]);
+};
+
+export const parseData = (data: Payloads): IParseItem[] | [] => {
   if (
     !validateObj(data as Record<string, unknown>) ||
     !Object.keys(data).length
@@ -137,8 +143,10 @@ export const parseData = (
       const schema = schemas[key];
       if (!Object.keys(schema).length) return false;
 
-      const value = data[schema.value];
-      const total = data[schema.total];
+      const value = getDataByKey(data, schema.value);
+      const total = getDataByKey(data, schema.total);
+
+      if (!value || !total) return false;
 
       return parseItem(
         value,
