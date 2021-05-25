@@ -11,13 +11,14 @@ const Body: React.FC = () => {
   const dataCountry = parseData({ ...cases, ...vaccines });
   const dataGlobal = parseData(global);
 
+  const showData = dataCountry.length;
+
   return (
     <Styles.Wrapper>
-      <Stats title="Global" data={dataGlobal} loading={loading.global} />
       <Stats
-        title={selectedCountry}
-        data={dataCountry}
-        loading={loading.data}
+        title={selectedCountry || 'Global'}
+        data={showData ? dataCountry : dataGlobal}
+        loading={loading.global || loading.data}
       />
     </Styles.Wrapper>
   );

@@ -24,7 +24,8 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
     label: 'Select Country',
     value: '',
   });
-  const [, dispatch] = useStore();
+  const [store, dispatch] = useStore();
+  const { selectedCountry } = store;
 
   const handleOnChange = (option: IOption): void => setSelectValue(option);
 
@@ -50,7 +51,7 @@ const Select: React.FC<IProps> = ({ options, ...props }) => {
   useEffect(() => {
     if (!selectValue) return;
     const { value } = selectValue;
-    if (!value) return;
+    if (!value || value === selectedCountry) return;
     debounceGetCases(value);
   }, [selectValue]);
 
