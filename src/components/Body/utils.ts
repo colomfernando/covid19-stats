@@ -1,15 +1,7 @@
 import { validateString, validateNumber, validateObj } from 'utils';
-import {
-  IGlobalPayload,
-  ICasesPayload,
-  IVaccinesPayload,
-} from 'store/interfaces';
+import { ICasesPayload, IVaccinesPayload } from 'store/interfaces';
 
-type Payloads =
-  | ICasesPayload
-  | IVaccinesPayload
-  | IGlobalPayload
-  | Record<string, unknown>;
+type Payloads = ICasesPayload | IVaccinesPayload | Record<string, unknown>;
 
 interface ISchema {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -44,7 +36,7 @@ const schemas: ISchemas = {
   },
   deaths: {
     value: 'deaths',
-    total: 'population',
+    total: 'confirmed',
     type: 'deaths',
     minColor: 'secondary',
     maxColor: 'primary',
