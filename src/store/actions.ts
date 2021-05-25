@@ -1,10 +1,5 @@
 import types from './types';
-import {
-  ICasesPayload,
-  IVaccinesPayload,
-  IGlobalPayload,
-  IAction,
-} from './interfaces';
+import { ICasesPayload, IVaccinesPayload, IAction } from './interfaces';
 
 export const setCasesAction = (
   payload: ICasesPayload
@@ -38,11 +33,4 @@ export const setCountriesAction = (countries: string[]): IAction<string[]> => ({
 export const setSelectedCountryAction = (country: string): IAction<string> => ({
   type: types.SET_SELECTED_COUNTRY,
   payload: country,
-});
-
-export const setGlobalsAction = (
-  global: IGlobalPayload
-): IAction<IGlobalPayload> => ({
-  type: types.SET_GLOBALS,
-  payload: global,
 });
