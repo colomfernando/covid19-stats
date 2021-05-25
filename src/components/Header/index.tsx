@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import useStore from 'store';
+import { ICasesPayload, IVaccinesPayload } from 'store/interfaces';
 import {
   setCountriesAction,
-  setGlobalsAction,
   setLoadingGlobalAction,
+  setSelectedCountryAction,
+  setVaccinesAction,
+  setCasesAction,
 } from 'store/actions';
 import Select from 'components/Select';
-import { getInitialData } from 'api';
+import { getInitialData, getApiData } from 'api';
 import Logo from 'components/Logo';
 import Styles from './styles';
 
@@ -17,14 +20,15 @@ const Header: React.FC = () => {
   const setCountries = async (): Promise<void> => {
     dispatch(setLoadingGlobalAction(true));
     const initialData = await getInitialData();
+    const globalData = await getApiData({ country: 'Global' });
 
-    if ('message' in initialData) {
-      return dispatch(setLoadingGlobalAction(false));
-    }
-    const { global, countries } = initialData;
+    const { countries } = initialData;
+    const { cases, vaccines } = globalData;
 
-    dispatch(setGlobalsAction(global));
     dispatch(setLoadingGlobalAction(false));
+    dispatch(setSelectedCountryAction('Global'));
+    dispatch(setCasesAction(cases as ICasesPayload));
+    dispatch(setVaccinesAction(vaccines as IVaccinesPayload));
     return dispatch(setCountriesAction(countries));
   };
 
