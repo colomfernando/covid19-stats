@@ -18,7 +18,7 @@ const Bar: React.FC<IBarProps> = ({ type, total, value, color, ...props }) => {
     <Styles.Wrapper {...props}>
       <Styles.WrapperText>
         <Styles.Title>{`${type}:`}</Styles.Title>
-        <Styles.Text>{`${value.toLocaleString()} / ${total.toLocaleString()}`}</Styles.Text>
+        <Styles.Text>{`${value.toLocaleString()}`}</Styles.Text>
       </Styles.WrapperText>
       <Styles.WrapperProgress color={color}>
         <Styles.Progress
