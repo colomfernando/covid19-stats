@@ -9,6 +9,7 @@ const Body: React.FC = () => {
   const { cases, vaccines, selectedCountry, loading } = store;
 
   const dataCountry = parseData({ ...cases, ...vaccines });
+  const { population } = cases;
 
   return (
     <Styles.Wrapper>
@@ -16,6 +17,7 @@ const Body: React.FC = () => {
         title={selectedCountry || 'Global'}
         data={dataCountry}
         loading={loading.global || loading.data}
+        population={population as number}
       />
     </Styles.Wrapper>
   );

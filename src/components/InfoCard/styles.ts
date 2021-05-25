@@ -20,6 +20,14 @@ const Title = styled.h3`
   color: ${palette.common.black};
 `;
 
+const Population = styled.span`
+  font-size: 14px;
+  padding-top: 3px;
+  display: flex;
+  margin-left: 20px;
+  color: ${palette.grey[600]};
+`;
+
 const WrapperTitle = styled.div`
   display: flex;
   height: 20px;
@@ -54,6 +62,7 @@ Wrapper.displayName = 'InfoCard';
 export default {
   Wrapper,
   Title,
+  Population,
   WrapperChilds,
   Bullet,
   WrapperTitle,

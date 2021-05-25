@@ -7,14 +7,20 @@ import Styles from './styles';
 interface IStatsProps {
   title: string;
   loading: boolean;
+  population: number;
   data: IParseItem[] | [];
 }
 
-const Stats: React.FC<IStatsProps> = ({ title, loading = false, data }) => {
+const Stats: React.FC<IStatsProps> = ({
+  title,
+  loading = false,
+  data,
+  population,
+}) => {
   if (!data || !validateArr(data) || !data.length) return null;
 
   return (
-    <InfoCard title={title} loading={loading}>
+    <InfoCard title={title} loading={loading} population={population}>
       {loading ? (
         <Styles.Loading loading={loading} />
       ) : (
