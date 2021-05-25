@@ -62,7 +62,6 @@ export interface IState {
   selectedCountry: string;
   cases: Record<string, unknown> | ICasesPayload;
   vaccines: Record<string, unknown> | IVaccinesPayload;
-  global: Record<string, unknown> | IGlobalPayload;
   loading: ILoading;
   countries: string[];
 }
